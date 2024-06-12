@@ -1,22 +1,25 @@
 import React from 'react';
 import './ToDo.css';
-import Boton from '../boton/Boton'
+import Boton from '../boton/Boton.js'
+
+
 const ToDo = ({ toDoList, setToDo }) => {
-    console.log(toDoList)
     const marcarComoTachado = (id, checked) => {
         const index = toDoList.findIndex(td => td.id === id);
         const updatedToDoList = [...toDoList]; 
         updatedToDoList[index] = { 
             ...updatedToDoList[index],
             tachado: checked,
-            fechaTachado: checked ? new Date().toLocaleString() : ""
+            fechaTachado: checked ? new Date().toLocaleString() : "",
+            masRapido: updatedToDoList[index].masRapido ? false : false
         };
         setToDo(updatedToDoList);
     };
+
     return (
         <ul>
             {toDoList.map(td => (
-                <li key={td.id} className={td.tachado ? 'completed' : ''}>
+                <li key={td.id} className={td.tachado ? 'completed' : ''} style={{ boxShadow: td.masRapido ? '1px 2px 10px blue' : ''}}>
                     <input 
                         type="checkbox" 
                         onChange={() => marcarComoTachado(td.id, !td.tachado)} 

@@ -8,10 +8,12 @@ function App() {
   const [toDoList,setToDo] = useState([]);
   return(
     <>
-    <Input toDo={toDo} setTD = {setTD}></Input>
-    <Boton tipo={"agregarToDo"} toDoList={toDoList} setToDo={setToDo} toDo = {toDo}> </Boton>
-    <ToDo toDoList={toDoList} setToDo={setToDo} />
-    
+      <div className='controlador'>
+        <Boton tipo={"agregarToDo"} toDoList={toDoList} setToDo={setToDo} toDo = {toDo}> </Boton>
+        <Input toDo={toDo} setTD = {setTD}></Input>
+        <Boton tipo={"tareaRapida"} toDoList={toDoList} setToDo={setToDo} toDo = {toDo}></Boton>
+      </div>
+      <ToDo toDoList={toDoList} setToDo={setToDo} />
     </>
   ) ;
 }
